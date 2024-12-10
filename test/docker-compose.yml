@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    container_name: azurite
+    ports:
+      - "10000:10000" # Blob service
+      # - "10001:10001" # Queue service
+      # - "10002:10002" # Table service
+    volumes:
+      - ./data:/data
+    # command: "azurite --location /data --blobHost 0.0.0.0 --queueHost 0.0.0.0 --tableHost 0.0.0.0"
+    command: "azurite --location /data --blobHost 0.0.0.0"
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" # RabbitMQ default messaging port
+      - "15672:15672" # RabbitMQ management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  nodejs:
+    build:
+      context: ./static-source-server
+    container_name: nodejs_static_server
+    ports:
+      - "3000:3000" # Node.js server port
+    volumes:
+      - ./static-source-server:/usr/src/app
+    command: "pnpm start"
+    depends_on:
+      - azurite
+      - rabbitmq
