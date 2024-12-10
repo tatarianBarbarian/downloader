@@ -24,12 +24,13 @@ fastify.post("/schedule", async function handler(request, reply) {
 
 // Run the server!
 try {
+  console.log(process.env.PORT);
   const _channel = await connectRabbitMQ();
   await startWorker();
 
   channel = _channel;
 
-  await fastify.listen({ port: 3001 });
+  await fastify.listen({ port: process.env.PORT ?? 8080 });
 } catch (err) {
   fastify.log.error(err);
   process.exit(1);
