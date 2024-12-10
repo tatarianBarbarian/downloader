@@ -22,6 +22,11 @@ fastify.post("/schedule", async function handler(request, reply) {
   reply.status(200).send();
 });
 
+// Healthcheck
+fastify.get("/", async (req, reply) => {
+  reply.status(200).send();
+});
+
 // Run the server!
 try {
   console.log(process.env.PORT);
