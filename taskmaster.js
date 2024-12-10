@@ -19,12 +19,12 @@ fastify.post("/schedule", async function handler(request, reply) {
     });
   }
 
-  reply.status(200).send();
+  reply.status(200).send({ success: true });
 });
 
 // Healthcheck
 fastify.get("/", async (req, reply) => {
-  reply.status(200).send();
+  reply.send({ hello: "world" });
 });
 
 // Run the server!
@@ -35,7 +35,7 @@ try {
 
   channel = _channel;
 
-  await fastify.listen({ port: process.env.PORT ?? 8080 });
+  await fastify.listen({ host: "0.0.0.0", port: process.env.PORT ?? 8080 });
 } catch (err) {
   fastify.log.error(err);
   process.exit(1);
