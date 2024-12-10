@@ -10,7 +10,7 @@ const fastify = Fastify({
 });
 
 // Declare a route
-fastify.get("/schedule", async function handler(request, reply) {
+fastify.post("/schedule", async function handler(request, reply) {
   const { body } = request;
 
   if (body.url) {
