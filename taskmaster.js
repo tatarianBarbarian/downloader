@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import { config } from "./config.js";
 import { connectRabbitMQ } from "./rabbitUtls.js";
+import { startWorker } from "./worker.js";
 
 let channel;
 
@@ -24,6 +25,8 @@ fastify.get("/schedule", async function handler(request, reply) {
 // Run the server!
 try {
   const _channel = await connectRabbitMQ();
+  await startWorker();
+
   channel = _channel;
 
   await fastify.listen({ port: 3001 });

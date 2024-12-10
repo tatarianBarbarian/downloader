@@ -2,7 +2,7 @@ import { config } from "./config.js";
 import { connectRabbitMQ } from "./rabbitUtls.js";
 import { downloadAndUploadToBlob } from "./blobUtils.js";
 
-const startWorker = async () => {
+export const startWorker = async () => {
   try {
     const channel = await connectRabbitMQ();
     await channel.assertQueue(config.queueName, { durable: false });
@@ -33,5 +33,3 @@ const startWorker = async () => {
     throw error;
   }
 };
-
-await startWorker();
