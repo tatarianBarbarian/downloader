@@ -1,7 +1,7 @@
 import { BlobServiceClient } from "@azure/storage-blob";
 import axios from "axios";
 import { Readable } from "node:stream";
-import { config } from "./config";
+import { config } from "./config.js";
 
 const AZURE_STORAGE_CONNECTION_STRING = config.blobConnString;
 const CONTAINER_NAME = config.containerName;

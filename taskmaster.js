@@ -1,6 +1,6 @@
 import Fastify from "fastify";
-import { config } from "./config";
-import { connectRabbitMQ } from "./rabbitUtls";
+import { config } from "./config.js";
+import { connectRabbitMQ } from "./rabbitUtls.js";
 
 let channel;
 

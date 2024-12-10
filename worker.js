@@ -1,6 +1,6 @@
-import { config } from "./config";
-import { connectRabbitMQ } from "./rabbitUtls";
-import { downloadAndUploadToBlob } from "./blobUtils";
+import { config } from "./config.js";
+import { connectRabbitMQ } from "./rabbitUtls.js";
+import { downloadAndUploadToBlob } from "./blobUtils.js";
 
 const startWorker = async () => {
   try {
