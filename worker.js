@@ -33,3 +33,5 @@ export const startWorker = async () => {
     throw error;
   }
 };
+
+await startWorker();
