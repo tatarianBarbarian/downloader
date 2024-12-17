@@ -19,8 +19,30 @@ We have 3 components in this app:
 2. Message broker for queueing job;
 3. Worker node, which downloads files and uploads them to remote storage;
 
-## Development
+## Running locally
 
-To run a dev environment, go to test, run following command:
+Running project locally requires 3 steps:
 
+1. Run dev environment
+2. Configure `.env` file
+3. Run task master
+4. Run worker
+
+### 1. Run dev environment
+
+Dev environment is powered by docker compose.
+To start it, run following command in `test/` folder:
+ 
 `docker compose up -d --build`
+
+### 2. Configure .env variable
+
+Use `.env.example` file as a reference
+
+### 3. Run task master
+
+`npm run start:taskmaster`
+
+### 4. Run worker
+
+`npm run start:worker`
