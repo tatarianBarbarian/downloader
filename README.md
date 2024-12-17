@@ -1,5 +1,7 @@
 # Downloader API
 
+![Downloader Logo](https://github.com/tatarianBarbarian/downloader/blob/5aafb4490402e1b05d2dfa1c56d2dc5e623e494d/docs/logo.png)
+
 ## Usage
 
 To schedule a job, make a POST request to `/schedule` with a JSON body with field URL that points to the URL that should be downloaded.
