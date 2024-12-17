@@ -1,7 +1,6 @@
 import Fastify from "fastify";
 import { config } from "./config.js";
 import { connectRabbitMQ } from "./rabbitUtls.js";
-import { startWorker } from "./worker.js";
 
 let channel;
 
@@ -31,7 +30,6 @@ fastify.get("/", async (req, reply) => {
 try {
   console.log(process.env.PORT);
   const _channel = await connectRabbitMQ();
-  await startWorker();
 
   channel = _channel;
 
